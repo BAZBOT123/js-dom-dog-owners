@@ -7,6 +7,8 @@ function createDogListItem(dog){
   li.innerText = dog.name;
 
   // (1)
+
+ 
   //TODO: Here, add a click event listener
   //on to the li element. Inside that listener,
   //call the createDogCard method and pass
@@ -15,7 +17,7 @@ function createDogListItem(dog){
   //from the dogContainer
  
   return li;
-};
+}
 
 function createSection() {
   const section = document.createElement("section");
