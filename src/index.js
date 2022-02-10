@@ -1,4 +1,4 @@
-function createDogListItem(dog){
+function createDogListItem(dog) {
   const li = document.createElement("li");
   const dogContainer = document.querySelector(".main");
 
@@ -7,18 +7,22 @@ function createDogListItem(dog){
 
   // (1)
 
-  li.addEventListener("click", function(){
-    createDogCard(dog)
-   const section = document.querySelector("section")
+  li.addEventListener("click", function () {
+    const container = createDogCard(dog)
+    const section = document.querySelector("section")
+    if(section != null)
     section.remove()
+    const main = document.querySelector(".main")
+    main.append(container)
   })
+
   //TODO: Here, add a click event listener
-  //on to the li element. Inside that listener,
+  //on to the li element. Inside that listener,o
   //call the createDogCard method and pass
   //the dog variable as a parameter. You will
   //also need to remove any existing dog card
   //from the dogContainer
- 
+
   return li;
 };
 
@@ -33,11 +37,14 @@ const createDogCardDesc = (bio) => {
   div.className = "main__dog-section__desc";
 
   //(2)
- const header = document.createElement("h3")
- header.className = bio
-
- const text = document.createElement("p")
- text.innerText = "Lorem"
+  const header = document.createElement("h3")
+  header.innerText = "bio"
+  console.log(bio)
+  const text = document.createElement("p")
+  text.innerText = `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum,
+  minima voluptates libero cumque rerum consequatur optio aliquid sint
+  eum maxime illo laborum omnis quo ab rem cupiditate nulla
+  perspiciatis ipsum!`
 
   //TODO: Update this section to create new elements
   //for the bio header and the bio text. Add those
@@ -57,6 +64,7 @@ function createDogCardBottomSection(dog) {
   div.className = "main__dog-section__btn";
 
   // (6)
+
   //TODO: If the isGoodDog flag is true, set
   //the button text to "Bad Dog". If false,
   //set it to "Good Dog"
@@ -77,7 +85,7 @@ const createDogCard = (dog) => {
   //TODO: Update this section to create a new image
   //element and add it to the dog card. Set the source of 
   //the image to the image path on the dog object
-  
+
   const desc = createDogCardDesc(dog.bio);
   const bottomSection = createDogCardBottomSection(dog);
 
@@ -173,10 +181,20 @@ const formButton = document.querySelector(".dogs-list__button--add");
 const dogContainer = document.querySelector(".main");
 
 // (4)
-formButton.addEventListener('click', function(){
+formButton.addEventListener('click', function () {
+
+
+  const formSection = document.createElement("section")
+  formSection.setAttribute('class', 'main__dog-section')
 
   const h2 = document.createElement("h2")
-const form = document.create
+  h2.innerText = "Add a new Dog"
+
+  const form = document.createElement('form')
+  form.setAttribute('class', 'form')
+   return form
+
+  
 })
 //TODO: Add an event listener on to form button so that
 //when the user clicks the button, the form is displayed.
