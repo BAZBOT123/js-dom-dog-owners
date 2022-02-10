@@ -10,10 +10,9 @@ function createDogListItem(dog) {
   li.addEventListener("click", function () {
     const container = createDogCard(dog)
     const section = document.querySelector("section")
-    if(section != null)
-    section.remove()
-    const main = document.querySelector(".main")
-    main.append(container)
+    if (section != null)
+      section.remove()
+    dogContainer.append(container)
   })
 
   //TODO: Here, add a click event listener
@@ -65,6 +64,7 @@ function createDogCardBottomSection(dog) {
 
   // (6)
 
+
   //TODO: If the isGoodDog flag is true, set
   //the button text to "Bad Dog". If false,
   //set it to "Good Dog"
@@ -111,8 +111,35 @@ function createForm() {
   submitInput.className = "form__button";
 
   //(5)
+
+  form.addEventListener("submit", function(event) {
+    event.preventDefault()
+    const newDog = document.querySelector("#name")
+
+    const name = newDog.value
+    if(name.length === 0) {
+      return
+    }
+
+    const dogPicture = document.querySelector('#image') 
+    const image = dogPicture.value
+    
+
+    const dogsBio = document.querySelector('#bio') 
+    const bio = dogsBio.value
+
+    const newCohort = {
+      name: cohortName,
+      students: studentList.split('\n')
+  }
+
+    dogPicture.value = ""
+    newDog.value = ""
+    dogsBio.value = ""
+
+  })
   //TODO: Add an event listener on to the form to capture the
-  //submit event. In the submit event, add a item  to the
+  //submit event. In the submit event, add an item to the
   //list of dogs at the top of the page, and add a new object
   //in to the dogs array with the data captured from the form.
 
@@ -182,19 +209,11 @@ const dogContainer = document.querySelector(".main");
 
 // (4)
 formButton.addEventListener('click', function () {
+  const section = document.querySelector('section')
+  section.remove()
+  const mainForm = renderMainForm()
+  dogContainer.append(mainForm)
 
-
-  const formSection = document.createElement("section")
-  formSection.setAttribute('class', 'main__dog-section')
-
-  const h2 = document.createElement("h2")
-  h2.innerText = "Add a new Dog"
-
-  const form = document.createElement('form')
-  form.setAttribute('class', 'form')
-   return form
-
-  
 })
 //TODO: Add an event listener on to form button so that
 //when the user clicks the button, the form is displayed.
