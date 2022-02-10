@@ -63,7 +63,9 @@ function createDogCardBottomSection(dog) {
   div.className = "main__dog-section__btn";
 
   // (6)
-
+if (isGoodDog === true) {
+  return "Bad Dog"
+} else return false}
 
   //TODO: If the isGoodDog flag is true, set
   //the button text to "Bad Dog". If false,
@@ -123,21 +125,25 @@ function createForm() {
 
     const dogPicture = document.querySelector('#image') 
     const image = dogPicture.value
-    
 
     const dogsBio = document.querySelector('#bio') 
     const bio = dogsBio.value
 
-    const newCohort = {
-      name: cohortName,
-      students: studentList.split('\n')
+    const newDoggo = {
+      formName: name,
+      formNicture: image,
+      fromBio: bio
   }
 
     dogPicture.value = ""
     newDog.value = ""
     dogsBio.value = ""
+     
+    dog.push(newDoggo)
 
+    renderMainForm()
   })
+
   //TODO: Add an event listener on to the form to capture the
   //submit event. In the submit event, add an item to the
   //list of dogs at the top of the page, and add a new object
