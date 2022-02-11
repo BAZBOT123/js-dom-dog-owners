@@ -37,13 +37,10 @@ const createDogCardDesc = (bio) => {
 
   //(2)
   const header = document.createElement("h3")
-  header.innerText = "bio"
+  header.innerText = "Bio"
   console.log(bio)
   const text = document.createElement("p")
-  text.innerText = `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum,
-  minima voluptates libero cumque rerum consequatur optio aliquid sint
-  eum maxime illo laborum omnis quo ab rem cupiditate nulla
-  perspiciatis ipsum!`
+  text.innerText = bio
 
   //TODO: Update this section to create new elements
   //for the bio header and the bio text. Add those
@@ -58,20 +55,42 @@ const createDogCardDesc = (bio) => {
 function createDogCardBottomSection(dog) {
   const button = document.createElement("button");
   const text = document.createElement("p");
+  text.innerText = "Is the dog naughty?"
   const div = document.createElement("div");
-
   div.className = "main__dog-section__btn";
 
+  const isNaughty = document.createElement('h3')
+    if (dog.isGoodDog) { 
+      isNaughty.innerText = 'yes!'}
+    else if (!dog.isGoodDog) { 
+      isNaughty.innerText = 'No!'}
+    if (dog.isGoodDog) { 
+      button.innerText = 'Good Dog!'}
+    else if (!dog.isGoodDog) { 
+      button.innerText = 'Bad Dog!'}
+  
+
   // (6)
-if (isGoodDog === true) {
-  return "Bad Dog"
-} else return false}
+  button.addEventListener('click', function () {
+    if (dog.isGoodDog) {
+        dog.isGoodDog = false
+        button.innerText = 'Bad Dog!'
+        isNaughty.innerText = 'yes!'
+    }
+    else if (!dog.isGoodDog) {
+        dog.isGoodDog = true
+        button.innerText = 'Good Dog!'
+        isNaughty.innerText = 'No!'
+    }
+})
 
   //TODO: If the isGoodDog flag is true, set
   //the button text to "Bad Dog". If false,
   //set it to "Good Dog"
 
   div.append(text, button);
+
+  
   return div;
 };
 
@@ -113,36 +132,31 @@ function createForm() {
   submitInput.className = "form__button";
 
   //(5)
-
   form.addEventListener("submit", function(event) {
     event.preventDefault()
-    const newDog = document.querySelector("#name")
-
-    const name = newDog.value
-    if(name.length === 0) {
-      return
-    }
-
-    const dogPicture = document.querySelector('#image') 
-    const image = dogPicture.value
-
-    const dogsBio = document.querySelector('#bio') 
-    const bio = dogsBio.value
-
+    const nameInput = document.querySelector("#name")
+    const imgInput = document.querySelector('#image') 
+    const bioInput = document.querySelector('#bio') 
+   
     const newDoggo = {
-      formName: name,
-      formNicture: image,
-      fromBio: bio
+      id: data.length+1,
+      name: nameInput.value,
+      bio: bioInput.value,
+      isGoodDog: true,
+      formNicture: imgInput.value
   }
 
-    dogPicture.value = ""
-    newDog.value = ""
-    dogsBio.value = ""
-     
-    dog.push(newDoggo)
+  imgInput.value = ""
+  nameInput.value = ""
+  bioInput.value = ""
 
-    renderMainForm()
+    data.push(newDoggo)
+
+    renderDogList(data)
   })
+  
+
+ 
 
   //TODO: Add an event listener on to the form to capture the
   //submit event. In the submit event, add an item to the
@@ -219,7 +233,6 @@ formButton.addEventListener('click', function () {
   section.remove()
   const mainForm = renderMainForm()
   dogContainer.append(mainForm)
-
 })
 //TODO: Add an event listener on to form button so that
 //when the user clicks the button, the form is displayed.
