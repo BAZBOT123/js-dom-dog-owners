@@ -15,13 +15,6 @@ function createDogListItem(dog) {
     dogContainer.append(container)
   })
 
-  //TODO: Here, add a click event listener
-  //on to the li element. Inside that listener,o
-  //call the createDogCard method and pass
-  //the dog variable as a parameter. You will
-  //also need to remove any existing dog card
-  //from the dogContainer
-
   return li;
 };
 
@@ -42,9 +35,6 @@ const createDogCardDesc = (bio) => {
   const text = document.createElement("p")
   text.innerText = bio
 
-  //TODO: Update this section to create new elements
-  //for the bio header and the bio text. Add those
-  //elements to the div.
   div.append(header);
   div.append(text);
 
@@ -84,10 +74,6 @@ function createDogCardBottomSection(dog) {
     }
 })
 
-  //TODO: If the isGoodDog flag is true, set
-  //the button text to "Bad Dog". If false,
-  //set it to "Good Dog"
-
   div.append(text, isNaughty, button);
 
   
@@ -102,10 +88,6 @@ const createDogCard = (dog) => {
   // (3)
   const picture = document.createElement("img");
   picture.setAttribute("src", dog.image)
-
-  //TODO: Update this section to create a new image
-  //element and add it to the dog card. Set the source of 
-  //the image to the image path on the dog object
 
   const desc = createDogCardDesc(dog.bio);
   const bottomSection = createDogCardBottomSection(dog);
@@ -137,7 +119,7 @@ function createForm() {
     const nameInput = document.querySelector("#name")
     const imgInput = document.querySelector('#image') 
     const bioInput = document.querySelector('#bio') 
-   
+  
     const newDoggo = {
       id: data.length+1,
       name: nameInput.value,
@@ -154,14 +136,6 @@ function createForm() {
 
     renderDogList(data)
   })
-  
-
- 
-
-  //TODO: Add an event listener on to the form to capture the
-  //submit event. In the submit event, add an item to the
-  //list of dogs at the top of the page, and add a new object
-  //in to the dogs array with the data captured from the form.
 
   form.append(
     nameLabel,
@@ -234,8 +208,3 @@ formButton.addEventListener('click', function () {
   const mainForm = renderMainForm()
   dogContainer.append(mainForm)
 })
-//TODO: Add an event listener on to form button so that
-//when the user clicks the button, the form is displayed.
-//the renderMainForm method will return an element that
-//contains the form, so you only need to add it to the 
-//dogContainer and remove any existing children.
