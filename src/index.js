@@ -55,11 +55,11 @@ const createDogCardDesc = (bio) => {
 function createDogCardBottomSection(dog) {
   const button = document.createElement("button");
   const text = document.createElement("p");
-  text.innerText = "Is the dog naughty?"
+  text.innerText = "Is naughty?"
   const div = document.createElement("div");
   div.className = "main__dog-section__btn";
 
-  const isNaughty = document.createElement('h3')
+  const isNaughty = document.createElement('h5')
     if (dog.isGoodDog) { 
       isNaughty.innerText = 'yes!'}
     else if (!dog.isGoodDog) { 
@@ -88,7 +88,7 @@ function createDogCardBottomSection(dog) {
   //the button text to "Bad Dog". If false,
   //set it to "Good Dog"
 
-  div.append(text, button);
+  div.append(text, isNaughty, button);
 
   
   return div;
