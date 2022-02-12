@@ -132,7 +132,7 @@ function createForm() {
   nameInput.value = ""
   bioInput.value = ""
 
-    data.push(newDoggo)
+    data.unshift(newDoggo)
 
     renderDogList(data)
   })
